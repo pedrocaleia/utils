@@ -1,0 +1,67 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath group: "org.junit.platform", name: "junit-platform-gradle-plugin", version: "1.1.0"
+	}
+}
+
+
+apply plugin: "java-library"
+apply plugin: "wrapper"
+apply plugin: "org.junit.platform.gradle.plugin"
+apply plugin: "jacoco"
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+	mavenCentral();
+}
+
+
+dependencies {
+	implementation		group: "com.fasterxml.jackson.core",	name: "jackson-databind",		version: "2.9.4";
+	implementation		group: "org.junit.jupiter", 			name: "junit-jupiter-api", 		version: "5.1.0";
+
+	testCompileOnly 	group: "org.junit.jupiter", 			name: "junit-jupiter-api", 		version: "5.1.0";
+	
+	testRuntimeOnly 	group: "org.junit.jupiter", 			name: "junit-jupiter-engine", 	version: "5.1.0";
+}
+
+
+jacoco {
+	toolVersion = "0.8.0";
+    applyTo junitPlatformTest;
+}
+
+
+jacocoTestReport {
+	reports {
+		xml.enabled = true;
+		xml.destination = file( "$buildDir/reports/jacoco/xml/jacoco_test_report.xml" );
+		html.enabled = true;
+		html.destination = file( "$buildDir/reports/jacoco/html" );
+	}
+}
+
+
+junitPlatformTest {
+	jacoco {
+		destinationFile = file( "$buildDir/jacoco/test.exec" );
+	}
+}
+
+
+compileJava {
+	options.encoding = "UTF-8";
+}
+
+
+wrapper {
+	gradleVersion = "4.6";
+}
+
