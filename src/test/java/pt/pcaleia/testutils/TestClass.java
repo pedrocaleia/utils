@@ -1,6 +1,9 @@
 package pt.pcaleia.testutils;
 
 
+/**
+ * @author Pedro Caleia
+ */
 final class TestClass {
 	
 	

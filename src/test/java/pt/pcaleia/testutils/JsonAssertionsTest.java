@@ -17,6 +17,9 @@ import pt.pcaleia.util.test.JsonAssertions;
 import pt.pcaleia.util.test.exceptions.InvalidJsonException;
 
 
+/**
+ * @author Pedro Caleia
+ */
 public final class JsonAssertionsTest {
 	
 	
