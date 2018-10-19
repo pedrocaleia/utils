@@ -25,20 +25,6 @@ public final class JsonAssertions {
 	}
 	
 	
-	/**
-	 * When using an {@link com.fasterxml.jackson.databind.ObjectMapper ObjectMapper} to convert an {@link Object Object} into a 
-	 * {@link com.fasterxml.jackson.databind.JsonNode JsonNode} (using the method {@link com.fasterxml.jackson.databind.ObjectMapper#valueToTree valueToTree}), 
-	 * {@code long} types get converted into a {@link com.fasterxml.jackson.databind.node.LongNode LongNode}.
-	 * 
-	 * If you convert a {@link java.util.String String} into a {@link com.fasterxml.jackson.databind.JsonNode JsonNode} (using the method 
-	 * {@link com.fasterxml.jackson.databind.ObjectMapper#readTree readTree}) small numeric values get converted into the type 
-	 * {@link com.fasterxml.jackson.databind.node.IntNode IntNode} which makes the equals comparison fail.
-	 * 
-	 * @param actual
-	 *            Actual value
-	 * @param expected
-	 *            Expected value 
-	 */
 	public static void assertEquals( JsonNode actual, JsonNode expected ) throws IOException {
 		if( actual == null ) {
 			throw new IllegalArgumentException( "The 'actual' argument is null and therefore not a valid Json String." );
@@ -46,6 +32,12 @@ public final class JsonAssertions {
 		else if( expected == null ) {
 			throw new IllegalArgumentException( "The 'expected' argument is null and therefore not a valid Json String." );
 		}
+		
+		// When using an ObjectMapper to convert an Object into a JsonNode, using the method ObjectMapper#valueToTree, long types get converted into
+		// a LongNode but if you convert a String into a JsonNode, using the method ObjectMapper#readTree, small numeric values get converted into the type 
+		// IntNode, which makes the equals comparison fail between the LongNode and the IntNode.
+		// Because of this the JsonNode objects need to be converted to String and back to JsonNode using the ObjectMapper#readTree method to ensure that
+		// all the values are transformed into Objects of the same type.
 		
 		JsonNode actualJsonNode = DEFAULT_MAPPER.readTree( actual.toString() );
 		JsonNode expectedJsonNode = DEFAULT_MAPPER.readTree( expected.toString() );
