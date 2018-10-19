@@ -1,4 +1,4 @@
-package pt.caleia.testutils;
+package pt.pcaleia.testutils;
 
 
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
+import pt.pcaleia.testutils.Resources;
 
 
 public final class ResourcesTest {

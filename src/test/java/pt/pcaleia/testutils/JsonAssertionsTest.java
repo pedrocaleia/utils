@@ -1,4 +1,4 @@
-package pt.caleia.testutils;
+package pt.pcaleia.testutils;
 
 
 import java.io.IOException;
@@ -11,8 +11,8 @@ import org.opentest4j.AssertionFailedError;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pt.caleia.testutils.JsonAssertions;
-import pt.caleia.testutils.exceptions.InvalidJsonException;
+import pt.pcaleia.testutils.JsonAssertions;
+import pt.pcaleia.testutils.exceptions.InvalidJsonException;
 
 
 public final class JsonAssertionsTest {

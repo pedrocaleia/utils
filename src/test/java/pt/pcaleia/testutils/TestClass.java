@@ -1,4 +1,4 @@
-package pt.caleia.testutils;
+package pt.pcaleia.testutils;
 
 
 final class TestClass {
