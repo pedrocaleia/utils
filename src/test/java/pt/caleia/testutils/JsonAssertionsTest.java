@@ -161,6 +161,24 @@ public final class JsonAssertionsTest {
 	
 	
 	@Test
+	public void testThatAssertEqualsJsonNodeStringThrowsAnIAEWhenTheFirstArgumentIsNull() throws IOException {
+		String expected = "{ \"property\": \"value1\" }";
+		
+		Executable executable = () -> JsonAssertions.assertEquals( (JsonNode) null, expected );
+		Assertions.assertThrows( IllegalArgumentException.class, executable );
+	}
+	
+	
+	@Test
+	public void testThatAssertEqualsJsonNodeStringThrowsAnIAEWhenTheSecondArgumentIsNull() throws IOException {
+		JsonNode actualJsonNode = DEFAULT_MAPPER.readTree( "{ \"property\": \"value2\" }" );
+		
+		Executable executable = () -> JsonAssertions.assertEquals( actualJsonNode, (String) null );
+		Assertions.assertThrows( IllegalArgumentException.class, executable );
+	}
+	
+	
+	@Test
 	public void testThatAssertEqualsStringJsonNodeSuccedesWhenArgumentsAreEqual() throws IOException {
 		String actual = "{ \"property\": \"value\" }";
 		JsonNode expectedJsonNode = DEFAULT_MAPPER.readTree( "{ \"property\": \"value\" }" );
@@ -176,6 +194,24 @@ public final class JsonAssertionsTest {
 		
 		Executable executable = () -> JsonAssertions.assertEquals( actual, expectedJsonNode );
 		Assertions.assertThrows( AssertionFailedError.class, executable );
+	}
+	
+	
+	@Test
+	public void testThatAssertEqualsStringJsonNodeThrowsAnIAEWhenTheFirstArgumentIsNull() throws IOException {
+		JsonNode expectedJsonNode = DEFAULT_MAPPER.readTree( "{ \"property\": \"value1\" }" );
+		
+		Executable executable = () -> JsonAssertions.assertEquals( (String) null, expectedJsonNode );
+		Assertions.assertThrows( IllegalArgumentException.class, executable );
+	}
+	
+	
+	@Test
+	public void testThatAssertEqualsStringJsonNodeThrowsAnIAEWhenTheSecondArgumentIsNull() throws IOException {
+		String actual = "{ \"property\": \"value2\" }";
+		
+		Executable executable = () -> JsonAssertions.assertEquals( actual, (JsonNode) null );
+		Assertions.assertThrows( IllegalArgumentException.class, executable );
 	}
 	
 }

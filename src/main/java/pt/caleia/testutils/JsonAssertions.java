@@ -63,7 +63,7 @@ public final class JsonAssertions {
 	
 	
 	public static void assertEquals( String actual, JsonNode expected ) throws IOException {
-		JsonNode actualJsonNode = DEFAULT_MAPPER.readTree( actual );
+		JsonNode actualJsonNode = jsonStringToJsonNode( actual, "actual" );
 		assertEquals( actualJsonNode, expected );
 	}
 	
