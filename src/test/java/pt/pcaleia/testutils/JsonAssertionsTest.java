@@ -2,6 +2,8 @@ package pt.pcaleia.testutils;
 
 
 import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,7 +13,6 @@ import org.opentest4j.AssertionFailedError;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pt.pcaleia.testutils.JsonAssertions;
 import pt.pcaleia.testutils.exceptions.InvalidJsonException;
 
 
@@ -19,6 +20,23 @@ public final class JsonAssertionsTest {
 	
 	
 	private static final ObjectMapper DEFAULT_MAPPER = new ObjectMapper();
+	
+	
+	@Test
+	public void testThatConstructorThrowsAnAE() throws Exception {
+		Constructor<JsonAssertions> constructor = JsonAssertions.class.getDeclaredConstructor();
+		constructor.setAccessible( true );
+		
+		Executable executable = () -> {
+			try {
+				constructor.newInstance();
+			}
+			catch( InvocationTargetException ite ) {
+				throw ite.getCause();
+			}
+		};
+		Assertions.assertThrows( AssertionError.class, executable );
+	}
 	
 	
 	@Test
