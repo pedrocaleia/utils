@@ -66,13 +66,6 @@ public final class JsonAssertions {
 	}
 	
 	
-	public static void assertEquals( Object actual, String expectedPathFirst, String ... expectedPathMore ) throws IOException {
-		JsonNode actualJsonNode = DEFAULT_MAPPER.valueToTree( actual );
-		String expected = Resources.getResourceAsString( expectedPathFirst, expectedPathMore );
-		assertEquals( actualJsonNode, expected );
-	}
-	
-	
 	private static JsonNode jsonStringToJsonNode( String json, String argumentName ) throws IOException {
 		if( json == null ) {
 			throw new IllegalArgumentException( String.format( "The '%s' argument is null and therefore not a valid Json String.", argumentName ) );

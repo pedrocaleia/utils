@@ -178,22 +178,4 @@ public final class JsonAssertionsTest {
 		Assertions.assertThrows( AssertionFailedError.class, executable );
 	}
 	
-	
-	@Test
-	public void testThatAssertEqualsObjectStringStringArrayFailsWhenArgumentsAreEqual() throws IOException {
-		TestClass testObject = new TestClass( "value1" );
-		
-		JsonAssertions.assertEquals( testObject, "test_class_1.json" );
-	}
-	
-	
-	@Test
-	public void testThatAssertEqualsObjectStringStringArrayFailsWhenArgumentsAreNotEqual() throws IOException {
-		TestClass testObject = new TestClass( "value1" );
-		
-		
-		Executable executable = () -> JsonAssertions.assertEquals( testObject, "test_class_2.json" );
-		Assertions.assertThrows( AssertionFailedError.class, executable );
-	}
-	
 }
