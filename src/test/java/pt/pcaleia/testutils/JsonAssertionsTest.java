@@ -13,7 +13,8 @@ import org.opentest4j.AssertionFailedError;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pt.pcaleia.testutils.exceptions.InvalidJsonException;
+import pt.pcaleia.util.test.JsonAssertions;
+import pt.pcaleia.util.test.exceptions.InvalidJsonException;
 
 
 public final class JsonAssertionsTest {

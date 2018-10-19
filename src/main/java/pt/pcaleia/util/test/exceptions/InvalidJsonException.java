@@ -1,4 +1,4 @@
-package pt.pcaleia.testutils.exceptions;
+package pt.pcaleia.util.test.exceptions;
 
 
 @SuppressWarnings( "serial" )

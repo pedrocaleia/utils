@@ -1,4 +1,4 @@
-package pt.pcaleia.testutils;
+package pt.pcaleia.util.test;
 
 
 import java.io.IOException;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pt.pcaleia.testutils.exceptions.InvalidJsonException;
+import pt.pcaleia.util.test.exceptions.InvalidJsonException;
 
 
 /**
