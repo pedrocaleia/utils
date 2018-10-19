@@ -20,9 +20,7 @@ public final class Resources {
 	
 	
 	public static byte[] getResource( Path path ) throws IOException {
-		if( path == null ) {
-			throw new IllegalArgumentException( "Argument 'path' can't be null." );
-		}
+		ArgumentAssertions.assertNotNull( path, "path" );
 		
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		try( InputStream inputStream = classLoader.getResourceAsStream( path.toString() ) ) {
@@ -50,6 +48,8 @@ public final class Resources {
 	
 	
 	public static String getResourceAsString( String first, String ... more ) throws IOException {
+		ArgumentAssertions.assertNotNull( first, "first" );
+		
 		byte[] data = getResource( Paths.get( first, more ) );
 		
 		return new String( data, StandardCharsets.UTF_8 );

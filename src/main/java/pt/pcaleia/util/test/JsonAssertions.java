@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pt.pcaleia.util.ArgumentAssertions;
 import pt.pcaleia.util.test.exceptions.InvalidJsonException;
 
 
@@ -19,7 +20,6 @@ public final class JsonAssertions {
 	
 	
 	private static final ObjectMapper DEFAULT_MAPPER = new ObjectMapper();
-	private static final String NULL_MESSAGE = "The '%s' argument is null and therefore not a valid Json String.";
 	private static final String INVALID_JSON = "The '%s' argument is not a valid Json String.";
 	
 	
@@ -29,12 +29,8 @@ public final class JsonAssertions {
 	
 	
 	public static void assertEquals( JsonNode actual, JsonNode expected ) throws IOException {
-		if( actual == null ) {
-			throw new IllegalArgumentException( String.format( NULL_MESSAGE, "actual" ) );
-		}
-		else if( expected == null ) {
-			throw new IllegalArgumentException( String.format( NULL_MESSAGE, "actual" ) );
-		}
+		ArgumentAssertions.assertNotNull( actual, "actual" );
+		ArgumentAssertions.assertNotNull( expected, "expected" );
 		
 		// When using an ObjectMapper to convert an Object into a JsonNode, using the method ObjectMapper#valueToTree, long types get converted into
 		// a LongNode but if you convert a String into a JsonNode, using the method ObjectMapper#readTree, small numeric values get converted into the type 
@@ -69,9 +65,7 @@ public final class JsonAssertions {
 	
 	
 	private static JsonNode jsonStringToJsonNode( String json, String argumentName ) throws IOException {
-		if( json == null ) {
-			throw new IllegalArgumentException( String.format( NULL_MESSAGE, argumentName ) );
-		}
+		ArgumentAssertions.assertNotNull( json, argumentName );
 		
 		JsonNode jsonNode;
 		try {
