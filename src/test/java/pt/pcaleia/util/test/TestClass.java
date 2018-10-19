@@ -1,4 +1,4 @@
-package pt.pcaleia.testutils;
+package pt.pcaleia.util.test;
 
 
 /**
