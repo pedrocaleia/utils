@@ -22,6 +22,7 @@ public final class JsonAssertions {
 	
 	
 	private JsonAssertions() {
+		throw new AssertionError( JsonAssertions.class.getSimpleName() + " class cannot be instantiated." );
 	}
 	
 	
