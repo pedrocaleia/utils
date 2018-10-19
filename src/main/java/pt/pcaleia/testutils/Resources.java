@@ -1,7 +1,6 @@
 package pt.pcaleia.testutils;
 
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -9,14 +8,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
+/**
+ * @author Pedro Caleia
+ */
 public final class Resources {
 	
 	
 	private Resources() {
+		throw new AssertionError( Resources.class.getSimpleName() + " class cannot be instantiated." );
 	}
 	
 	
-	public static String getResourceAsString( Path path ) throws IOException {
+	public static byte[] getResource( Path path ) throws IOException {
 		if( path == null ) {
 			throw new IllegalArgumentException( "Argument 'path' can't be null." );
 		}
@@ -27,22 +30,29 @@ public final class Resources {
 				throw new IllegalArgumentException( String.format( "The file '%s' doesn't exist.", path.toString() ) );
 			}
 			
-			ByteArrayOutputStream result = new ByteArrayOutputStream();
-			byte[] buffer = new byte[ 1024 ];
-			int length = 0;
+			byte[] data = inputStream.readAllBytes();
 			
-			do {
-				result.write( buffer, 0, length );
-				length = inputStream.read( buffer );
-			} while( length != -1 );
-			
-			return result.toString( StandardCharsets.UTF_8.name() );
+			return data;
 		}
 	}
 	
 	
+	public static byte[] getResource( String first, String ... more ) throws IOException {
+		return getResource( Paths.get( first, more ) );
+	}
+	
+	
+	public static String getResourceAsString( Path path ) throws IOException {
+		byte[] data = getResource( path );
+		
+		return new String( data, StandardCharsets.UTF_8 );
+	}
+	
+	
 	public static String getResourceAsString( String first, String ... more ) throws IOException {
-		return getResourceAsString( Paths.get( first, more ) );
+		byte[] data = getResource( Paths.get( first, more ) );
+		
+		return new String( data, StandardCharsets.UTF_8 );
 	}
 	
 }
