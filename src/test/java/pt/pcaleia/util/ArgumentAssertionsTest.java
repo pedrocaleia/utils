@@ -30,12 +30,5 @@ public final class ArgumentAssertionsTest {
 		Executable executable = () -> ArgumentAssertions.assertNotNull( "just a not null object", null );
 		Assertions.assertThrows( IllegalArgumentException.class, executable );
 	}
-	
-	
-	@Test
-	public void testThatAssertNotNullThrowsAnIAEWhenBothArgumentsAreNull() {
-		Executable executable = () -> ArgumentAssertions.assertNotNull( null, null );
-		Assertions.assertThrows( IllegalArgumentException.class, executable );
-	}
 
 }
