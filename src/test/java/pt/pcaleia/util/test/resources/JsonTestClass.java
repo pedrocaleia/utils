@@ -4,13 +4,13 @@ package pt.pcaleia.util.test.resources;
 /**
  * @author Pedro Caleia
  */
-final class TestClass {
+final class JsonTestClass {
 	
 	
 	private final String property;
 	
 	
-	public TestClass( String property ) {
+	public JsonTestClass( String property ) {
 		this.property = property;
 	}
 	
