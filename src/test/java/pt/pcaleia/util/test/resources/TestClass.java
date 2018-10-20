@@ -1,4 +1,4 @@
-package pt.pcaleia.util.test;
+package pt.pcaleia.util.test.resources;
 
 
 /**
