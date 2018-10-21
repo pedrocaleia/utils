@@ -66,5 +66,12 @@ public final class ArgumentAssertionsTest {
 		Executable executable = () -> ArgumentAssertions.assertNotEmpty( TestConstants.WHITE_SPACE_STRING, "theArgument" );
 		Assertions.assertThrows( IllegalArgumentException.class, executable );
 	}
+	
+	
+	@Test
+	public void testThatAssertNotEmptyThrowsAnIAEWhenTheSecondArgumentIsAnEmptyString() {
+		Executable executable = () -> ArgumentAssertions.assertNotEmpty( "just a string", TestConstants.WHITE_SPACE_STRING );
+		Assertions.assertThrows( IllegalArgumentException.class, executable );
+	}
 
 }
