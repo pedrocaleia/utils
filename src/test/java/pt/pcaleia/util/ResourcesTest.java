@@ -10,12 +10,19 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import pt.pcaleia.util.Resources;
+import pt.pcaleia.util.test.ClassAssertions;
 
 
 /**
  * @author Pedro Caleia
  */
 public final class ResourcesTest {
+	
+	
+	@Test
+	public void testThatResourcesClassIsAnUtilityClass() {
+		ClassAssertions.assertUtilityClass( Resources.class );
+	}
 	
 	
 	@Test
