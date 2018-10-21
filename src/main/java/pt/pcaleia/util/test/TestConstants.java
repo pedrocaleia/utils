@@ -7,6 +7,11 @@ package pt.pcaleia.util.test;
 public final class TestConstants {
 	
 	
+	private TestConstants() {
+		throw new AssertionError( TestConstants.class.getSimpleName() + " class cannot be instantiated." );
+	}
+	
+	
 	public static final String WHITE_SPACE_STRING;
 	static {
 		byte[] whiteSpaceString = new byte[ 33 ];
