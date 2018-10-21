@@ -2,8 +2,6 @@ package pt.pcaleia.util.test;
 
 
 import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,19 +25,8 @@ public final class JsonAssertionsTest {
 	
 	
 	@Test
-	public void testThatConstructorThrowsAnAE() throws Exception {
-		Constructor<JsonAssertions> constructor = JsonAssertions.class.getDeclaredConstructor();
-		constructor.setAccessible( true );
-		
-		Executable executable = () -> {
-			try {
-				constructor.newInstance();
-			}
-			catch( InvocationTargetException ite ) {
-				throw ite.getCause();
-			}
-		};
-		Assertions.assertThrows( AssertionError.class, executable );
+	public void testThatJsonAssertionsClassIsAnUtilityClass() {
+		ClassAssertions.assertUtilityClass( JsonAssertions.class );
 	}
 	
 	
