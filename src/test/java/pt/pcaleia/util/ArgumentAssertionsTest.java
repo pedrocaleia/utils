@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import pt.pcaleia.util.test.ClassAssertions;
 import pt.pcaleia.util.test.TestConstants;
 
 
@@ -12,6 +13,12 @@ import pt.pcaleia.util.test.TestConstants;
  * @author Pedro Caleia
  */
 public final class ArgumentAssertionsTest {
+	
+	
+	@Test
+	public void testThatArgumentAssertionsClassIsAnUtilityClass() {
+		ClassAssertions.assertUtilityClass( ArgumentAssertions.class );
+	}
 	
 	
 	@Test
