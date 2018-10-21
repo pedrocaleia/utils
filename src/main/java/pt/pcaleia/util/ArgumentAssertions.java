@@ -8,6 +8,7 @@ public final class ArgumentAssertions {
 	
 	
 	private static final String NULL_MESSAGE = "The '%s' argument cannot be null.";
+	private static final String NULL_OR_EMPTY_MESSAGE = "The '%s' argument cannot be null or empty.";
 
 	
 	private ArgumentAssertions() {
@@ -16,13 +17,23 @@ public final class ArgumentAssertions {
 	
 	
 	public static void assertNotNull( Object argument, String argumentName ) {
-		if( argumentName == null ) {
-			String message = String.format( NULL_MESSAGE, "argumentName" );
-			throw new IllegalArgumentException( message );
-		}
+		assertNotEmpty( argumentName, "argumentName" );
 		
 		if( argument == null ) {
 			String message = String.format( NULL_MESSAGE, argumentName );
+			throw new IllegalArgumentException( message );
+		}
+	}
+	
+	
+	public static void assertNotEmpty( String argument, String argumentName ) {
+		if( argumentName == null || argumentName.trim().isEmpty() ) {
+			String message = String.format( NULL_OR_EMPTY_MESSAGE, "argumentName" );
+			throw new IllegalArgumentException( message );
+		}
+		
+		if( argument == null || argument.trim().isEmpty() ) {
+			String message = String.format( NULL_OR_EMPTY_MESSAGE, argumentName );
 			throw new IllegalArgumentException( message );
 		}
 	}
