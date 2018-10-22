@@ -16,13 +16,3 @@ cache:
 
 after_success:
   - ./gradlew jacocoTestReport coveralls
-
-deploy:
-  - provider: releases
-    skip_cleanup: true
-    api_key:
-      secure: d7LG8zDD+7n4j12ZrxYWR+/qa1smg+4c31ppb7KP1+qpyRo3t7RZsRJIvr5dhnmZuKjcHg6Ih7bwfmVbcObq0VSI5wFQwR8Sms3wn06xCE5Tg+a03hM16MYv3qpmcy+ETpdtrutJxhojXNtd7cYCNCXOp+JC+s+d9+PPtCuCsCzbBIR1nnBENXtgAltwMZzJYs2kvWqEbEFUBcWi2Jy30YtkBaeIjxU+50kVqbrh/itronXNp4BOQH8r+pbZ55CHVJ9OmLkTw3BdvLmaKp7/tTpU0z+RdQ2cLZXZVllVBNdZ/JnxXcb/2kUJxZbk1sfaQnoBO6ua4YMQCVpPWThqFaHcy5+LjeLbzzVZZw13reSozFDQD8Et8I2aHj1pWkHS0IGHb9eDmuTxu5lm9SZ5mRztHBrLPSi8Mm8ggbrWTL1+eI+DuHy6kNhgb4RP3+iC4b7kAvIfc5XNhkoPsZCiiRsK/JIAAI46/wKYq5f0orF+B2J6BPl0NJZABSEuihT5vGpkTtkBPi7l6Qfm2t4jCyQr2OWqhWZDoDBtTFWJNNsK5fKktOy4o27E+eF/8QZjObGvx4OM11zjEfAedeaOyUK5dcGdDacZULLBTeCGr+5DkGDRrmx6z2C67MPOHIGQ/Ipblwj7wYPZ890wnDQy0dZq5pyAF14Y3jxr29GsoIc=
-    file_glob: true
-    file: "build/libs/*.jar"
-    on:
-      tags: true
