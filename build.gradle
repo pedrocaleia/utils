@@ -6,7 +6,6 @@ plugins {
 apply plugin: "wrapper"
 apply plugin: "java-library"
 apply plugin: "jacoco"
-apply plugin: "maven-publish"
 
 
 sourceCompatibility = 10
@@ -71,12 +70,14 @@ coveralls {
 
 task sourcesJar( type: Jar, dependsOn: classes ) {
 	from sourceSets.main.allJava;
+	version = System.getenv( "TRAVIS_TAG" );
 	classifier "sources";
 }
 
 
 task javadocJar( type: Jar, dependsOn: javadoc ) {
 	from javadoc;
+	version = System.getenv( "TRAVIS_TAG" );
 	classifier = "javadoc";
 }
 
@@ -84,20 +85,4 @@ task javadocJar( type: Jar, dependsOn: javadoc ) {
 artifacts {
 	archives sourcesJar;
 	archives javadocJar;
-}
-
-
-publishing {
-	publications {
-		BintrayPublication( MavenPublication ) {
-			from components.java;
-			
-			groupId = "pt.pcaleia";
-			artifactId = "utils";
-			version = System.getenv( "TRAVIS_TAG" );
-			
-			artifact sourcesJar;
-			artifact javadocJar;
-		}
-	}
 }
