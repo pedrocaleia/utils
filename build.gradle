@@ -70,19 +70,18 @@ coveralls {
 
 task sourcesJar( type: Jar, dependsOn: classes ) {
 	from sourceSets.main.allJava;
-	version = System.getenv( "TRAVIS_TAG" );
 	classifier "sources";
 }
 
 
 task javadocJar( type: Jar, dependsOn: javadoc ) {
 	from javadoc;
-	version = System.getenv( "TRAVIS_TAG" );
 	classifier = "javadoc";
 }
 
 
 artifacts {
+	version = System.getenv( "TRAVIS_TAG" );
 	archives sourcesJar;
 	archives javadocJar;
 }
