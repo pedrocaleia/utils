@@ -26,3 +26,9 @@ deploy:
     file: "build/libs/*.jar"
     on:
       tags: true
+
+  - provider: script
+    skip_cleanup: true
+    script: ./gradlew bintrayUpload
+    on:
+      tags: true
