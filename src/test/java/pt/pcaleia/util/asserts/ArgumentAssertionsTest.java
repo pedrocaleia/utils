@@ -1,4 +1,4 @@
-package pt.pcaleia.util;
+package pt.pcaleia.util.asserts;
 
 
 import org.junit.jupiter.api.Assertions;

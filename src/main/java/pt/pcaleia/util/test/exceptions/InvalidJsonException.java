@@ -1,7 +1,7 @@
 package pt.pcaleia.util.test.exceptions;
 
 
-import pt.pcaleia.util.ArgumentAssertions;
+import pt.pcaleia.util.asserts.ArgumentAssertions;
 
 
 /**

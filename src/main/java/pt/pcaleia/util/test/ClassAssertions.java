@@ -9,7 +9,7 @@ import java.lang.reflect.Modifier;
 import org.junit.jupiter.api.function.Executable;
 import org.opentest4j.AssertionFailedError;
 
-import pt.pcaleia.util.ArgumentAssertions;
+import pt.pcaleia.util.asserts.ArgumentAssertions;
 
 
 /**
