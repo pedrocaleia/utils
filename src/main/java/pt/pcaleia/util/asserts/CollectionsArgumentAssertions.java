@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 /**
  * @author Pedro Caleia
  */
-final class CollectionArgumentAssertions {
+final class CollectionsArgumentAssertions {
 	
 	
 	private static final String MUST_HAVE_NON_NULL_ELEMENTS_MESSAGE = "The %s argument must have at least 1 non-null element.";
