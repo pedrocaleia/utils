@@ -1,6 +1,9 @@
 package pt.pcaleia.util.asserts;
 
 
+import java.util.Collection;
+
+
 /**
  * @author Pedro Caleia
  */
@@ -47,6 +50,36 @@ public final class ArgumentAssertions {
 			String message = String.format( NULL_OR_EMPTY_MESSAGE, argumentName );
 			throw new IllegalArgumentException( message );
 		}
+	}
+	
+	
+	public static <E> void assertNotEmpty( Collection<E> collection, String argumentName ) {
+		CollectionArgumentAssertions.assertNotEmpty( collection, argumentName );
+	}
+	
+	
+	public static <E> void assertNonNullElements( Collection<E> collection, String argumentName ) {
+		CollectionArgumentAssertions.assertNonNullElements( collection, argumentName );
+	}
+	
+	
+	public static <E> void assertNotEmptyAndNonNullElements( Collection<E> collection, String argumentName ) {
+		CollectionArgumentAssertions.assertNotEmptyAndNonNullElements( collection, argumentName );
+	}
+	
+	
+	public static <E> void assertNotEmpty( E[] array, String argumentName ) {
+		CollectionArgumentAssertions.assertNotEmpty( array, argumentName );
+	}
+	
+	
+	public static <E> void assertNonNullElements( E[] array, String argumentName ) {
+		CollectionArgumentAssertions.assertNonNullElements( array, argumentName );
+	}
+	
+	
+	public static <E> void assertNotEmptyAndNonNullElements( E[] array, String argumentName ) {
+		CollectionArgumentAssertions.assertNotEmptyAndNonNullElements( array, argumentName );
 	}
 
 }
