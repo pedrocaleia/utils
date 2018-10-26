@@ -49,7 +49,7 @@ public final class ArgumentAssertionsTest {
 	
 	@Test
 	public void testThatAssertNotEmptyThrowsAnIAEWhenTheFirstArgumentIsNull() {
-		Executable executable = () -> ArgumentAssertions.assertNotEmpty( null, "theArgument" );
+		Executable executable = () -> ArgumentAssertions.assertNotEmpty( (String) null, "theArgument" );
 		Assertions.assertThrows( IllegalArgumentException.class, executable );
 	}
 	
