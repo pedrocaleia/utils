@@ -38,6 +38,9 @@ public final class Resources {
 	
 	
 	public static byte[] getResource( String first, String ... more ) throws IOException {
+		ArgumentAssertions.assertNotNull( first, "first" );
+		ArgumentAssertions.assertNonNullElements( more, "more" );
+		
 		return getResource( Paths.get( first, more ) );
 	}
 	
@@ -51,6 +54,7 @@ public final class Resources {
 	
 	public static String getResourceAsString( String first, String ... more ) throws IOException {
 		ArgumentAssertions.assertNotNull( first, "first" );
+		ArgumentAssertions.assertNonNullElements( more, "more" );
 		
 		byte[] data = getResource( Paths.get( first, more ) );
 		
