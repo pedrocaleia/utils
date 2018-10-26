@@ -7,7 +7,8 @@ package pt.pcaleia.util.asserts;
 public final class ArgumentAssertions {
 	
 	
-	private static final String NULL_MESSAGE = "The '%s' argument cannot be null.";
+	private static final String MUST_BE_NULL_MESSAGE = "The '%s' argument must be null.";
+	private static final String CANNOT_BE_NULL_MESSAGE = "The '%s' argument cannot be null.";
 	private static final String NULL_OR_EMPTY_MESSAGE = "The '%s' argument cannot be null or empty.";
 
 	
@@ -16,11 +17,21 @@ public final class ArgumentAssertions {
 	}
 	
 	
+	public static void assertNull( Object argument, String argumentName ) {
+		assertNotEmpty( argumentName, "argumentName" );
+		
+		if( argument != null ) {
+			String message = String.format( MUST_BE_NULL_MESSAGE, argumentName );
+			throw new IllegalArgumentException( message );
+		}
+	}
+	
+	
 	public static void assertNotNull( Object argument, String argumentName ) {
 		assertNotEmpty( argumentName, "argumentName" );
 		
 		if( argument == null ) {
-			String message = String.format( NULL_MESSAGE, argumentName );
+			String message = String.format( CANNOT_BE_NULL_MESSAGE, argumentName );
 			throw new IllegalArgumentException( message );
 		}
 	}
