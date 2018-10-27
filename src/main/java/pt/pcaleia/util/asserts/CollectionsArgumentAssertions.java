@@ -16,6 +16,11 @@ final class CollectionsArgumentAssertions {
 	private static final String CANNOT_HAVE_NULL_ELEMENTS_MESSAGE = "The %s argument cannot have null elements.";
 	
 	
+	private CollectionsArgumentAssertions() {
+		throw new AssertionError( CollectionsArgumentAssertions.class.getSimpleName() + " class cannot be instantiated." );
+	}
+	
+	
 	public static <E> void assertNotEmpty( Collection<E> collection, String argumentName ) {
 		ArgumentAssertions.assertNotNull( argumentName, "argumentName" );
 		ArgumentAssertions.assertNotNull( collection, argumentName );

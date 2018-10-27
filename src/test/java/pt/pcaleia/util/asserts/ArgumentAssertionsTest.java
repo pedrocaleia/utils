@@ -22,6 +22,26 @@ public final class ArgumentAssertionsTest {
 	
 	
 	@Test
+	public void testThatAssertNullReturnsWhenBothArgumentsAreValid() {
+		ArgumentAssertions.assertNull( null, "theArgument" );
+	}
+	
+	
+	@Test
+	public void testThatAssertNullThrowsWhenTheFirstArgumentIsNotNull() {
+		Executable executable = () -> ArgumentAssertions.assertNull( "just a not null object", "theArgument" );
+		Assertions.assertThrows( IllegalArgumentException.class, executable );
+	}
+	
+	
+	@Test
+	public void testThatAssertNullThrowsWhenTheSecondArgumentIsNull() {
+		Executable executable = () -> ArgumentAssertions.assertNotNull( null, null );
+		Assertions.assertThrows( IllegalArgumentException.class, executable );
+	}
+	
+	
+	@Test
 	public void testThatAssertNotNullReturnsWhenBothArgumentsAreValid() {
 		ArgumentAssertions.assertNotNull( "just a not null object", "theArgument" );
 	}
