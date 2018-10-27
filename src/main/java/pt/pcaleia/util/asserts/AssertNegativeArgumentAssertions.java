@@ -45,6 +45,8 @@ final class AssertNegativeArgumentAssertions {
 	
 	
 	private static void assertNegative( Number number, String argumentName ) {
+		ArgumentAssertions.assertNotNull( number, argumentName );
+		
 		if( number.doubleValue() >= 0 ) {
 			String message = String.format( MUST_BE_NEGATIVE_MESSAGE, argumentName );
 			throw new IllegalArgumentException( message );

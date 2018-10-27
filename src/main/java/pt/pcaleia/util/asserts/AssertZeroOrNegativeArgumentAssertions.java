@@ -45,6 +45,8 @@ final class AssertZeroOrNegativeArgumentAssertions {
 	
 	
 	private static void assertZeroOrNegative( Number number, String argumentName ) {
+		ArgumentAssertions.assertNotNull( number, argumentName );
+		
 		if( number.doubleValue() > 0 ) {
 			String message = String.format( MUST_BE_ZERO_OR_NEGATIVE_MESSAGE, argumentName );
 			throw new IllegalArgumentException( message );

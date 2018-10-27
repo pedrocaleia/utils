@@ -45,6 +45,8 @@ final class AssertPositiveArgumentAssertions {
 	
 	
 	private static void assertPositive( Number number, String argumentName ) {
+		ArgumentAssertions.assertNotNull( number, argumentName );
+		
 		if( number.doubleValue() <= 0 ) {
 			String message = String.format( MUST_BE_POSITIVE_MESSAGE, argumentName );
 			throw new IllegalArgumentException( message );
