@@ -55,6 +55,20 @@ jacoco {
 }
 
 
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.9;
+			}
+		}
+	}
+}
+
+
+check.dependsOn jacocoTestCoverageVerification;
+
+
 jacocoTestReport {
 	reports {
 		xml.enabled = true;
