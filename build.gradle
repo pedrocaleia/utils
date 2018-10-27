@@ -66,9 +66,6 @@ jacocoTestCoverageVerification {
 }
 
 
-check.dependsOn jacocoTestCoverageVerification;
-
-
 jacocoTestReport {
 	reports {
 		xml.enabled = true;
